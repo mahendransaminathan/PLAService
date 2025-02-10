@@ -1,0 +1,6 @@
+@PLAService_HostAddress = http://localhost:5012
+
+GET {{PLAService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
