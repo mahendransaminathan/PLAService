@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "8BqesRCeG0E=",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\PLAService\\PLAService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mahen\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.1\\microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",
+    "C:\\Users\\mahen\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
