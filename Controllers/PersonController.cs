@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using PLAService.Entities;
+using PLAService.Data;
 
 namespace PLAService.Controllers
 {
@@ -9,6 +10,12 @@ namespace PLAService.Controllers
     [EnableCors("AllowLocalhost")]
     public class PersonController : ControllerBase
     {
+        private readonly ApplicationDBContext? dbContext;
+
+        public PersonController(ApplicationDBContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
         [HttpPost] // POST: api/person
         public IActionResult AddPerson([FromBody] Person person)
         {
@@ -29,6 +36,14 @@ namespace PLAService.Controllers
                 EmailID = person.EmailID
             };
             Console.WriteLine("Person Data: " + person);
+
+            if (dbContext == null)
+            {
+                return StatusCode(500, "Database context is not available.");
+            }
+
+            dbContext.People.Add(person);
+            dbContext.SaveChanges();    
 
             return Ok(newPerson);            
         }        

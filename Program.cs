@@ -1,10 +1,17 @@
+using PLAService.Data;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers(); // Registers controllers
-
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.EnableDetailedErrors(builder.Configuration.GetValue<bool>("EntityFramework:EnableDetailedErrors"));
+    options.EnableSensitiveDataLogging(builder.Configuration.GetValue<bool>("EntityFramework:EnableSensitiveDataLogging"));
+});
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",

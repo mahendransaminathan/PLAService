@@ -1,15 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace PLAService.Entities
 {
     public class Person
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string Eircode { get; set; }
-        public string PhoneNumber { get; set; }
-        public string EmailID { get; set; }
+        [Key]
+        public int Id { get; set; } 
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
+        public required string AddressLine1 { get; set; }
+        public string? AddressLine2 { get; set; }
+        public required string City { get; set; }
+        public required string Country { get; set; }
+        public required string Eircode { get; set; }
+        public required string PhoneNumber { get; set; }
+        public required string EmailID { get; set; }
     }
 }
