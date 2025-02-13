@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 using PLAService.Entities;
 
 namespace PLAService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("AllowLocalhost")]
     public class PersonController : ControllerBase
     {
         [HttpPost] // POST: api/person
@@ -26,6 +28,7 @@ namespace PLAService.Controllers
                 PhoneNumber = person.PhoneNumber,
                 EmailID = person.EmailID
             };
+            Console.WriteLine("Person Data: " + person);
 
             return Ok(newPerson);            
         }        

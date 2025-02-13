@@ -4,6 +4,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers(); // Registers controllers
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost",
+        builder => builder.WithOrigins("http://localhost:3000")  // Allow your frontend's URL
+                          .AllowAnyHeader()                   // Allow all headers
+                          .AllowAnyMethod()                   // Allow all methods (GET, POST, etc.)
+                          .AllowCredentials());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,6 +42,10 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+app.UseRouting();
+// Use CORS policy globally
+app.UseCors("AllowLocalhost");
 app.MapControllers(); // Maps controller routes
 app.Run();
 
