@@ -7,5 +7,5 @@ Cloned from GitHub
 3. dotnet run
 
 # Create the Database using the following two commands
-dotnet ef migrations add InitialCreate
-dotnet ef database update
+1. dotnet ef migrations add InitialCreate
+2. dotnet ef database update
