@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using PLAService.Entities;
-using PLAService.Data;
+using PLAService.PersonalServices;
+
 
 namespace PLAService.Controllers
 {
@@ -10,42 +11,18 @@ namespace PLAService.Controllers
     [EnableCors("AllowLocalhost")]
     public class PersonController : ControllerBase
     {
-        private readonly ApplicationDBContext? dbContext;
+        PersonalService personalService;
 
-        public PersonController(ApplicationDBContext dbContext)
+        public PersonController(PersonalService personalService)
         {
-            this.dbContext = dbContext;
+            this.personalService = personalService ?? throw new ArgumentNullException(nameof(personalService));
         }
         [HttpPost] // POST: api/person
         public IActionResult AddPerson([FromBody] Person person)
-        {
-            if (person == null)
-            {
-                return BadRequest("Person data is required.");
-            }
-            var newPerson = new Person
-            {
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                AddressLine1 = person.AddressLine1,
-                AddressLine2 = person.AddressLine2,
-                City = person.City,
-                Country = person.Country,
-                Eircode = person.Eircode,
-                PhoneNumber = person.PhoneNumber,
-                EmailID = person.EmailID
-            };
-            Console.WriteLine("Person Data: " + person);
+        {            
+           personalService.AddPerson(person);
 
-            if (dbContext == null)
-            {
-                return StatusCode(500, "Database context is not available.");
-            }
-
-            dbContext.People.Add(person);
-            dbContext.SaveChanges();    
-
-            return Ok(newPerson);            
+           return Ok(person);            
         }        
     }
 }

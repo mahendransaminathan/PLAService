@@ -1,5 +1,7 @@
 using PLAService.Data;
 using Microsoft.EntityFrameworkCore;
+using PLAService.Providers;
+using PLAService.PersonalServices;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -20,7 +22,8 @@ builder.Services.AddCors(options =>
                           .AllowAnyMethod()                   // Allow all methods (GET, POST, etc.)
                           .AllowCredentials());
 });
-
+builder.Services.AddScoped<PersonalService>();
+builder.Services.AddScoped<PersonalProvider>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -54,6 +57,7 @@ app.UseRouting();
 // Use CORS policy globally
 app.UseCors("AllowLocalhost");
 app.MapControllers(); // Maps controller routes
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
