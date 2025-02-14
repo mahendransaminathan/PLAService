@@ -20,7 +20,7 @@ dotnet tool install --global dotnet-ef --version 9.*
 # Please update the Sql server name under appsettings.json file according to your server name 
 
 # Install the following package to run the unit test 
-dotnet add package NUnit
-dotnet add package Moq
-dotnet add package NUnit3TestAdapter
+1. dotnet add package NUnit
+2. dotnet add package Moq
+3. dotnet add package NUnit3TestAdapter
 
