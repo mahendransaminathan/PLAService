@@ -14,3 +14,5 @@ Cloned from GitHub
 # Create the Database using the following two commands
 1. dotnet ef migrations add InitialCreate
 2. dotnet ef database update
+# Run the following command when dotnet ef command is not recognised
+dotnet tool install --global dotnet-ef --version 9.*
