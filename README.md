@@ -16,3 +16,5 @@ Cloned from GitHub
 2. dotnet ef database update
 # Run the following command when dotnet ef command is not recognised
 dotnet tool install --global dotnet-ef --version 9.*
+
+# Please update the Sql server name under appsettings.json file according as per your server name 
