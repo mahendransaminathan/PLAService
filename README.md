@@ -6,6 +6,11 @@ Cloned from GitHub
 2. dotnet build
 3. dotnet run
 
+# Run the following commands to connect to a Database from Asp.Net Back End
+1. dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+2. dotnet add package Microsoft.EntityFrameworkCore.Design
+3. dotnet add package Microsoft.EntityFrameworkCore.Tools
+
 # Create the Database using the following two commands
 1. dotnet ef migrations add InitialCreate
 2. dotnet ef database update
