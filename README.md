@@ -26,4 +26,4 @@ dotnet tool install --global dotnet-ef --version 9.*
 4. dotnet add package Microsoft.NET.Test.Sdk
 
 #Run the Unit test using InMemory DB - Install the following package
-dotnet add package Microsoft.EntityFrameworkCore.InMemory
+1. dotnet add package Microsoft.EntityFrameworkCore.InMemory
