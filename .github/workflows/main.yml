@@ -1,0 +1,29 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - users: actions/checkout@v3
+
+      - name: Setup .NET
+        users: actions/setup-dotnet@v3
+        with:
+          dotnet-version1: '6.0.x'
+
+      - name: Restore
+        run: dotnet retorre ./PLAService.sln
+
+      - name: Build
+        run: dotnet build ./PLAService.sln --configiguration Release --no-restore
+
+      - name: Publish
+        run: dotnet pubish ./PLAService.sln --configuration Relase --no-build
+          
