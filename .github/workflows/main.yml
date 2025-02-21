@@ -25,5 +25,5 @@ jobs:
         run: dotnet build ./PLAService.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet pubish ./PLAService.sln --configuration Relase --no-build
+        run: dotnet publish ./PLAService.sln --configuration Relase --no-build
           
