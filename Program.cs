@@ -17,7 +17,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",
-        builder => builder.WithOrigins("http://localhost:3000")  // Allow your frontend's URL
+        builder => builder.WithOrigins("http://localhost:3000",
+                                        "https://productlicenseapproval-bsb3a3buh3bwavfy.northeurope-01.azurewebsites.net")  // Allow your frontend's URL
                           .AllowAnyHeader()                   // Allow all headers
                           .AllowAnyMethod()                   // Allow all methods (GET, POST, etc.)
                           .AllowCredentials());
