@@ -6,9 +6,9 @@ namespace PLAService.PersonalServices
 {
     public class PersonalService
     {
-        private PersonalProvider provider = new PersonalProvider();
+        private readonly IPersonalProvider provider;
 
-        public PersonalService(PersonalProvider personalProvider)
+        public PersonalService(IPersonalProvider personalProvider)
         {
             this.provider = personalProvider ?? throw new ArgumentNullException(nameof(personalProvider));
         }
