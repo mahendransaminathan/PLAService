@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore
-        run: dotnet retore ./PLAService.sln
+        run: dotnet restore ./PLAService.sln
 
       - name: Build
         run: dotnet build ./PLAService.sln --configuration Release --no-restore
