@@ -27,7 +27,7 @@ jobs:
         run: dotnet build ./PLAService.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./PLAService.sln --configuration Release --no-build '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        run: dotnet publish ./PLAService.sln --configuration Release --no-build ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: Deployment
         uses: azure/webapps-deploy@v2
