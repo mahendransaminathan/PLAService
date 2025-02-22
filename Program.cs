@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
                           .AllowCredentials());
 });
 builder.Services.AddScoped<IPersonalProvider, PersonalProvider>();
-builder.Services.AddScoped<IPersonalService, PersonalService>();
+builder.Services.AddScoped<PersonalService>();
 
 var app = builder.Build();
 
