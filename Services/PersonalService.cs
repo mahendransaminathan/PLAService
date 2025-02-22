@@ -4,7 +4,7 @@ using PLAService.Providers;
 
 namespace PLAService.PersonalServices
 {
-    public class PersonalService
+    public class PersonalService : IPersonalService
     {
         private readonly IPersonalProvider provider;
 

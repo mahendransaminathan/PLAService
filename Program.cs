@@ -23,8 +23,9 @@ builder.Services.AddCors(options =>
                           .AllowAnyMethod()                   // Allow all methods (GET, POST, etc.)
                           .AllowCredentials());
 });
-builder.Services.AddScoped<PersonalService>();
-builder.Services.AddScoped<PersonalProvider>();
+builder.Services.AddScoped<IPersonalProvider, PersonalProvider>();
+builder.Services.AddScoped<IPersonalService, PersonalService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
