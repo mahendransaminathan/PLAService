@@ -3,7 +3,7 @@ using PLAService.Entities;
 
 namespace PLAService.Providers
 {
-    public class PersonalProvider
+    public class PersonalProvider : IPersonalProvider
     {
         private readonly ApplicationDBContext? dbContext;
 
@@ -16,7 +16,7 @@ namespace PLAService.Providers
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public void AddPerson(Person person)
+        public virtual void AddPerson(Person person)
         {
            if (dbContext == null)
             {
