@@ -4,34 +4,31 @@ using PLAService.Entities;
 using PLAService.Providers;
 using PLAService.PersonalServices;
 using System;
-<<<<<<< HEAD
-=======
+
 using PLAService.Data;
 using Microsoft.EntityFrameworkCore;
->>>>>>> f224593a6f610931d1c8303aea7f97ba3012d087
+
 
 namespace PLAService.Tests
 {
     public class PersonalServiceTests
     {
-<<<<<<< HEAD
+
         private Mock<PersonalProvider> mockProvider;
         private PersonalService personalService;
-=======
-        private PersonalService personalService;
-        private Mock<PersonalProvider> mockProvider; // Mocked dependency
+
         private ApplicationDBContext dbContext;
->>>>>>> f224593a6f610931d1c8303aea7f97ba3012d087
+
 
         [SetUp]
         public void Setup()
         {
-<<<<<<< HEAD
+
             // Create mock for PersonalProvider
             mockProvider = new Mock<PersonalProvider>();
 
             // Instantiate PersonalService with the mocked provider
-=======
+
             var options = new DbContextOptionsBuilder<ApplicationDBContext>()
                 .UseInMemoryDatabase("TestDatabase") // Use in-memory DB
                 .Options;
@@ -42,7 +39,7 @@ namespace PLAService.Tests
             mockProvider = new Mock<PersonalProvider>(dbContext);
 
             // Inject the mocked PersonalProvider into PersonalService
->>>>>>> f224593a6f610931d1c8303aea7f97ba3012d087
+
             personalService = new PersonalService(mockProvider.Object);
         }
 
