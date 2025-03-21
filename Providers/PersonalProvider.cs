@@ -16,7 +16,7 @@ namespace PLAService.Providers
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public virtual void AddPerson(Person person)
+        public void AddPerson(Person person)
         {
            if (dbContext == null)
             {

@@ -1,5 +1,9 @@
 using PLAService.Entities;
-public interface IPersonalProvider
+
+namespace PLAService.Providers
 {
-    void AddPerson(Person person);
+    public interface IPersonalProvider
+    {
+        void AddPerson(Person person);
+    }
 }
