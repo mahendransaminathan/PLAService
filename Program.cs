@@ -30,9 +30,12 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IPersonalProvider, PersonalProvider>();
 builder.Services.AddScoped<PersonalService>();
+
+var companyserviceapiURL = builder.Configuration.GetSection("CompanyServiceApiURL").Get<string>() ?? string.Empty;
+
 builder.Services.AddHttpClient<ICompanyServiceClient, CompanyServiceClient>(client =>
 {
-    client.BaseAddress = new Uri("https://companyservices.azurewebsites.net/");
+    client.BaseAddress = new Uri(companyserviceapiURL);
 });
 
 
