@@ -16,12 +16,11 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.EnableSensitiveDataLogging(builder.Configuration.GetValue<bool>("EntityFramework:EnableSensitiveDataLogging"));
 });
 
-var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",
-        builder => builder.WithOrigins(allowedOrigins)  // Allow your frontend's URL
+        builder => builder.WithOrigins(  "http://localhost:3000",
+                                         "https://productlicenseapproval-bsb3a3buh3bwavfy.northeurope-01.azurewebsites.net")  // Allow your frontend's URL
 
                           .AllowAnyHeader()                   // Allow all headers
                           .AllowAnyMethod()                   // Allow all methods (GET, POST, etc.)
@@ -31,11 +30,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<IPersonalProvider, PersonalProvider>();
 builder.Services.AddScoped<PersonalService>();
 
-var companyserviceapiURL = builder.Configuration.GetSection("CompanyServiceApiURL").Get<string>() ?? string.Empty;
-
 builder.Services.AddHttpClient<ICompanyServiceClient, CompanyServiceClient>(client =>
 {
-    client.BaseAddress = new Uri(companyserviceapiURL);
+    client.BaseAddress = new Uri("https://companyservices.azurewebsites.net/");
 });
 
 
