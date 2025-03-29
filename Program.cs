@@ -2,6 +2,7 @@ using PLAService.Data;
 using Microsoft.EntityFrameworkCore;
 using PLAService.Providers;
 using PLAService.PersonalServices;
+using PLAService.CompanyServices;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.EnableDetailedErrors(builder.Configuration.GetValue<bool>("EntityFramework:EnableDetailedErrors"));
     options.EnableSensitiveDataLogging(builder.Configuration.GetValue<bool>("EntityFramework:EnableSensitiveDataLogging"));
 });
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",
@@ -28,6 +30,11 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IPersonalProvider, PersonalProvider>();
 builder.Services.AddScoped<PersonalService>();
+
+builder.Services.AddHttpClient<ICompanyServiceClient, CompanyServiceClient>(client =>
+{
+    client.BaseAddress = new Uri("https://companyservices.azurewebsites.net/");
+});
 
 
 var app = builder.Build();
